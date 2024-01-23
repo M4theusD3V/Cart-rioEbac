@@ -1,11 +1,9 @@
 #include <stdio.h> //blibioteca de comunicação com o usúario
 #include <stdlib.h> //blibioteca de alocação de escpaço em memória
-#include <locale.h> //blibioteca de alocação de texto por região
-#include <string.h> //blibioteca responsavel por cuidar das strings
+#include <string.h> //blibioteca responsavel por cuidar das string
+#include <locale.h>
 int registro()
 {
-	 setlocale(LC_ALL, "Portuguese_Brazil");
-	
 	
 	//inicio das variáveis/string
     char arquivo[40];
@@ -63,7 +61,8 @@ int registro()
 
 int consulta()
 {
-	 //setando a gramática portuguesa no programa
+	 
+	
  
  	//inicio das variáveis/string
     char cpf[40]; 
@@ -113,52 +112,67 @@ int deletar()
 
 int main() //entrada inicial do sistema
 {
+      setlocale(LC_ALL, "Portuguese"); //definindo a gramática Portugues Brasil
+      
 	int opcao=0;
 	int laco=1;
+	char senhadigitada[10]="a";
+	int comparacao;
 	
-	for(laco=1;laco=1;)
+	printf("### Cartório da EBAC###\n\n");
+	printf("Login de adminstrador!\n\nDigite a sua senha: ");
+	scanf("%s",senhadigitada);
+	
+	comparacao = strcmp(senhadigitada, "admin");
+	
+	if(comparacao == 0)
 	{
-	
-   system("CLS");
-	
-   setlocale(LC_ALL, "Portuguese"); //definindo a gramática Portugues Brasil
+		system("CLS");
+    
+	    for(laco=1;laco=1;)
+	  {
    
-   printf("###Dados dos Alunos EBAC###\n \n"); //inicio do menu
-   printf("escolha a sua opção no menu!:\n \n");
-   printf("\t1 - Registrar nomes\n");
-   printf("\t2 - Consultar nomes\n");
-   printf("\t3 - Deletar nomes\n\n");
-   printf("\t4 - Sair do Sistema\n\n");
-   printf("opção: "); //fim do menu
+        printf("###Dados dos Alunos EBAC###\n \n"); //inicio do menu
+        printf("escolha a sua opção no menu!:\n \n");
+        printf("\t1 - Registrar nomes\n");
+        printf("\t2 - Consultar nomes\n");
+        printf("\t3 - Deletar nomes\n\n");
+        printf("\t4 - Sair do Sistema\n\n");
+        printf("opção: "); //fim do menu
    
-   scanf("%d",&opcao); //armazenando a escolha do cliente
+        scanf("%d",&opcao); //armazenando a escolha do cliente
    
-   system("CLS"); //inicio da seleção
+        system("CLS"); //inicio da seleção
    
-   switch(opcao)
-   {
-   	case 1:
-   	registro();
-   	break;
+        switch(opcao)
+       {
+   	    case 1:
+   	    registro();
+   	    break;
    	  
-   	case 2:
-   	consulta();
-   	break;
+   	    case 2:
+   	    consulta();
+   	    break;
    	
-   	case 3:
-  	deletar();
-   	break;
+   	    case 3:
+  	    deletar();
+   	    break;
    	
-   	case 4:
-   	printf("Obrigado por utilizar o sistema! :)\n");
-   	return 0;
-   	break;
+   	    case 4:
+   	    printf("Obrigado por utilizar o sistema! :)\n");
+   	    return 0;
+   	    break;
    	
-   	default:
-   	printf("Essa opção não esta disponivel:(\n");
-   	system("pause");
-   	break;
-   }
-   
+   	    default:
+   	    printf("Essa opção não esta disponivel:(\n");
+   	    system("pause");
+   	    break;
+       }
+       
+    }
+} 
+   else
+   printf("Senha incorreta!");
+        
 }
-}
+
